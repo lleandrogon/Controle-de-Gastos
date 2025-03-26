@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Transacao;
+use Illuminate\Http\Request;
+
+class TransacaoController extends Controller
+{
+    public function index() 
+    {
+        $transacoes = Transacao::all();
+        return view("transacoes", compact("transacoes"));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'valor' => 'required|numeric',
+            'tipo' => 'required|in:entrada,saida',
+            'descricao' => 'nullable|string'
+        ]);
+
+        Transacao::create([
+            'nome' => $request->nome,
+            'valor' => $request->valor,
+            'tipo' => $request->tipo,
+            'descricao' => $request->descricao
+        ]);
+
+        return redirect()->route('site.transacoes');
+    }
+}
