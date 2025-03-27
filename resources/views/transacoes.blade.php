@@ -16,25 +16,31 @@
         <table class="tabela">
             <thead>
                 <tr class="titulo-tabela">
-                    <td colspan="5">Dados das Transações</td>
+                    <td colspan="6">Dados das Transações</td>
                 </tr>
                 <tr>
-                    <td>ID</td>
                     <td>Nome</td>
                     <td>Valor</td>
                     <td>Tipo</td>
                     <td>Descrição</td>
+                    <td>Deletar</td>
                 </tr>
             </thead>
 
             <tbody>
                 @foreach ($transacoes as $transacao)
                     <tr>
-                        <td>{{ $transacao->id }}</td>
                         <td>{{ $transacao->nome }}</td>
                         <td>{{ number_format($transacao->valor, 2, ',', '.') }}</td>
                         <td>{{ ucfirst($transacao->tipo) }}</td>
                         <td>{{ $transacao->descricao }}</td>
+                        <td>
+                            <form action="{{ route('site.transacoes.destroy', $transacao->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta transação?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="botao-deletar"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

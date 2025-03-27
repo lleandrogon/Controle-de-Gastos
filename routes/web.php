@@ -9,5 +9,6 @@ Route::get('/', [PrincipalController::class, 'index'])->name('site.principal');
 
 Route::get('/transacao', [TransacaoController::class, 'index'])->name('site.transacoes');
 Route::post('/transacao', [TransacaoController::class, 'store'])->name('site.transacoes.store');
+Route::delete('/transacao/{id}', [TransacaoController::class, 'destroy'])->name('site.transacoes.destroy');
 
 Route::get('/adicionar', [InserirController::class, 'index'])->name('site.inserir');

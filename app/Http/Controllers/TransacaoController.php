@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Transacao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TransacaoController extends Controller
 {
@@ -29,6 +30,14 @@ class TransacaoController extends Controller
             'tipo' => $request->tipo,
             'descricao' => $request->descricao
         ]);
+
+        return redirect()->route('site.transacoes');
+    }
+
+    public function destroy($id) 
+    {
+        $transacao = Transacao::findOrFail($id);
+        $transacao->delete();
 
         return redirect()->route('site.transacoes');
     }

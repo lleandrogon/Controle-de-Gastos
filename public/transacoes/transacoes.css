@@ -8,6 +8,7 @@
     --azul-claro: #4fa3f7;
     --azul-escuro: #2a4d77;
     --laranja: #ffa500;
+    --vermelho: #c80000;
     --cinza-claro: #f4f4f4;
     --cinza-medio: #d3d3d3;
     --cinza-escuro: #707070;
@@ -98,6 +99,18 @@ html, body {
 
 .tabela td, .tabela th {
     transition: background-color 0.3s ease;
+}
+
+.botao-deletar {
+    border: none;
+    background-color: transparent;
+    font-size: 1.1em;
+    color: var(--vermelho);
+    cursor: pointer;
+}
+
+.botao-deletar:hover {
+    color: var(--laranja);
 }
 
 @media (max-width: 768px) {

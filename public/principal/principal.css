@@ -87,7 +87,7 @@ html, body {
 }
 
 canvas {
-    width: 100% !important;
+    width: 90% !important;
     height: auto !important;
 }
 
@@ -136,6 +136,6 @@ canvas {
 
 @media (min-width: 1800px) {
     .container-grafico {
-        padding: 0 400px;
+        padding: 0 300px;
     }
 }
