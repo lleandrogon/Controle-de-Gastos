@@ -23,6 +23,7 @@
                     <td>Valor</td>
                     <td>Tipo</td>
                     <td>Descrição</td>
+                    <td>Editar</td>
                     <td>Deletar</td>
                 </tr>
             </thead>
@@ -34,6 +35,7 @@
                         <td>{{ number_format($transacao->valor, 2, ',', '.') }}</td>
                         <td>{{ ucfirst($transacao->tipo) }}</td>
                         <td>{{ $transacao->descricao }}</td>
+                        <td><a href="{{ route('site.transacoes.editar', $transacao->id) }}" class="botao-editar"><i class="fa-solid fa-pencil"></i></a></td>
                         <td>
                             <form action="{{ route('site.transacoes.destroy', $transacao->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta transação?');">
                                 @csrf

@@ -57,12 +57,11 @@ html, body {
 .container-tabela {
     display: flex;
     justify-content: center;
-    padding: 20px;
 }
 
 .tabela {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
     border-collapse: collapse;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -99,6 +98,15 @@ html, body {
 
 .tabela td, .tabela th {
     transition: background-color 0.3s ease;
+}
+
+.botao-editar {
+    color: var(--azul-claro);
+    font-size: 1.1em;
+}
+
+.botao-editar:hover {
+    color: var(--azul-escuro);
 }
 
 .botao-deletar {

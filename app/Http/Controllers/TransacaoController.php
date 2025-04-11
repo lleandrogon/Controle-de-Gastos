@@ -22,9 +22,43 @@ class TransacaoController extends Controller
             'valor' => 'required|numeric',
             'tipo' => 'required|in:entrada,saida',
             'descricao' => 'nullable|string'
+        ],
+        [
+            'nome.required' => 'Campo nome é obrigatório',
+            'valor.required' => 'Valor inválido',
+            'tipo.required' => 'Campo tipo é obrigatório',
         ]);
 
         Transacao::create([
+            'nome' => $request->nome,
+            'valor' => $request->valor,
+            'tipo' => $request->tipo,
+            'descricao' => $request->descricao
+        ]);
+
+        return redirect()->route('site.transacoes');
+    }
+
+    public function editar($id) {
+        $transacao = Transacao::findOrFail($id);
+
+        return view('editar', compact('transacao'));
+    }
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'valor' => 'required|numeric',
+            'tipo' => 'required|in:entrada,saida',
+            'descricao' => 'nullable|string'
+        ],
+        [
+            'nome.required' => 'Campo nome é obrigatório',
+            'valor.required' => 'Valor inválido',
+            'tipo.required' => 'Campo tipo é obrigatório',
+        ]);
+
+        Transacao::where('id', $id)->update([
             'nome' => $request->nome,
             'valor' => $request->valor,
             'tipo' => $request->tipo,
